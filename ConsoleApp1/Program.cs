@@ -11,7 +11,7 @@ namespace ConsoleApp1
         {
             string deger = "pederli";
 
-            
+            Console.WriteLine(deger.StringEx()); 
 
             Console.WriteLine(deger.AddString());
 
@@ -45,16 +45,32 @@ namespace ConsoleApp1
 
 
 
-            OrnekReflection reflaction = new OrnekReflection();
+            //OrnekReflection reflaction = new OrnekReflection();
 
-            Type typeReflection = reflaction.GetType();
+            //Type typeReflection = reflaction.GetType();
 
-            var properties = typeReflection.GetProperties();
+            //var properties = typeReflection.GetProperties();
 
-            properties.ForEach(x =>
+            //properties.ForEach(x =>
+            //{
+            //    Console.WriteLine(x.Name);
+            //});
+
+
+            OrnekReflection  ornekReflection = new OrnekReflection();
+
+            Type getOrnekReflectionType = ornekReflection.GetType();
+
+            MethodInfo a=getOrnekReflectionType.GetMethod("MethodOrnek");
+
+            ParameterInfo[] parametreler =a.GetParameters();
+
+            foreach (var item in parametreler)
             {
-                Console.WriteLine(x.Name);
-            });
+                Console.WriteLine(item.DefaultValue.ToString());
+            }
+
+
 
         }
     }
@@ -78,14 +94,14 @@ namespace ConsoleApp1
     {
         public static string StringEx(this string str)
         {
-            //return "TC " + str;
+
             return $"TC {str}";
 
         }
 
         public static string StringEx2(string str)
         {
-            //return "TC " + str;
+            
             return $"TC {str}";
 
         }
@@ -118,7 +134,7 @@ namespace ConsoleApp1
     {
         public static string AddString(this string additional)
         {
-            return $"Tc {additional}";
+            return $"Rize {additional}";
         }
     }
 
@@ -128,6 +144,11 @@ namespace ConsoleApp1
         
         public string Surname { get; set; }
 
+
+        public void MethodOrnek(string a="Acibadem", int b=500)
+        {
+            Console.WriteLine(a);
+        }
     }
 
 
