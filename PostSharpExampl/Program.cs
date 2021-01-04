@@ -59,13 +59,11 @@ namespace PostSharpExampl
 
                 Console.WriteLine(args.Arguments.GetArgument(i));
 
-                args.Arguments.SetArgument(i, "Aydoğan");
 
-
-                //if (parameter.Name == "city" && args.Arguments.GetArgument(i).Equals("rize"))
-                //{
-                //    args.Arguments.SetArgument(i, "Aydoğan");
-                //}
+                if (parameter.Name == "city" && args.Arguments.GetArgument(i).Equals("rize"))
+                {
+                    args.Arguments.SetArgument(i, "Aydoğan");
+                }
             }
 
             List<object> GetObjects = new List<object>();
@@ -94,29 +92,30 @@ namespace PostSharpExampl
 
             Console.WriteLine("Methoda Girdiğinde");
 
-            ParameterInfo[] parameters = args.Method.GetParameters();
+            //ParameterInfo[] parameters = args.Method.GetParameters();
 
 
-            for (int i = 0; i < parameters.Length; i++)
-            {
-                ParameterInfo parameter = parameters[i];
+            //for (int i = 0; i < parameters.Length; i++)
+            //{
+            //    ParameterInfo parameter = parameters[i];
 
-                Console.WriteLine(parameter.Name);
+            //    Console.WriteLine(parameter.Name);
 
-                Console.WriteLine(args.Arguments.GetArgument(i));
+            //    Console.WriteLine(args.Arguments.GetArgument(i));
 
-                if (parameter.Name == "city" && args.Arguments.GetArgument(i).Equals("rize"))
-                {
-                    args.Arguments.SetArgument(i, "Aydoğan");
-                }
-            }
+            //    if (parameter.Name == "city" && args.Arguments.GetArgument(i).Equals("rize"))
+            //    {
+            //        args.Arguments.SetArgument(i, "Aydoğan");
+            //    }
+            //}
 
         }
 
-        //public override void OnExit(MethodExecutionArgs args)
-        //{
-        //    Console.WriteLine("Metottn çıktığında");
-        //}
+        public override void OnExit(MethodExecutionArgs args)
+        {
+            Console.WriteLine("Metottan Çıktığında ");
+        }
+
     }
 
     public class Job
@@ -125,7 +124,7 @@ namespace PostSharpExampl
         public string Name { get; set; }
 
 
-
+        [Aspect]
         public void AddPropsValue()
         {
             Id = 5;

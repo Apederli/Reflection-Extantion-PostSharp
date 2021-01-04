@@ -15,6 +15,11 @@ namespace ConsoleApp1
 
             Console.WriteLine(deger.AddString());
 
+            Console.WriteLine(deger.ChangeValue());
+
+            double price = 50;
+            Console.WriteLine(price.AddKdv()); 
+
 
 
             Reflect reflect = new Reflect();
@@ -94,8 +99,8 @@ namespace ConsoleApp1
     {
         public static string StringEx(this string str)
         {
-
-            return $"TC {str}";
+           // parametrede ki this gerekli
+            return $"TCK {str}";
 
         }
 
@@ -104,6 +109,17 @@ namespace ConsoleApp1
             
             return $"TC {str}";
 
+        }
+
+        public static string ChangeValue(this string str)
+        {
+            string deger="pederli";
+            if(str == deger)
+            {
+                str = "Aydoğan Pederli";
+            }
+
+            return str;
         }
 
     }
